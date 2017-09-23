@@ -102,6 +102,13 @@ __EXPORT void board_spi_reset(int ms)
 
 	kinetis_pinconfig(PIN_SPI1_SIN);
 
+	kinetis_pinconfig(GPIO_EXTI_GYRO_INT1);
+	kinetis_pinconfig(GPIO_EXTI_GYRO_INT2);
+	kinetis_pinconfig(GPIO_EXTI_ACCEL_MAG_INT1);
+	kinetis_pinconfig(GPIO_EXTI_ACCEL_MAG_INT2);
+	kinetis_pinconfig(GPIO_EXTI_BARO_INT1);
+	kinetis_pinconfig(GPIO_EXTI_BARO_INT2);
+
 }
 
 /************************************************************************************
@@ -116,8 +123,12 @@ void nxphlite_spidev_initialize(void)
 {
 	board_spi_reset(10);
 
+	kinetis_pinconfig(GPIO_EXTI_GYRO_INT1);
+	kinetis_pinconfig(GPIO_EXTI_GYRO_INT2);
+	kinetis_pinconfig(GPIO_EXTI_ACCEL_MAG_INT1);
+	kinetis_pinconfig(GPIO_EXTI_ACCEL_MAG_INT2);
 	kinetis_pinconfig(GPIO_EXTI_BARO_INT1);
-	kinetis_pinconfig(GPIO_P_INT);
+	kinetis_pinconfig(GPIO_EXTI_BARO_INT2);
 
 	for (unsigned int cs = 0; cs < arraySize(spi0selects_gpio); cs++) {
 		if (spi0selects_gpio[cs] != 0) {
